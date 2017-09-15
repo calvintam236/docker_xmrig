@@ -15,7 +15,7 @@ $ docker run -d --name YOUR_CONTAINER_NAME calvintam236/xmrig -a YOUR_ALGO -o YO
 Get `xmrig` options with:
 
 ```console
-$ docker run --rm calvintam236/xmrig -h
+$ docker run --rm calvintam236/xmrig
 ```
 
 Fetch logs of a container:
