@@ -2,7 +2,7 @@
 
 XMRig is the console miner provided by [XMRig](https://github.com/xmrig/xmrig).
 
-marlin supports Cryptonight, and Cryptonight-lite.
+XMRig supports Cryptonight, and Cryptonight-lite.
 
 # How to use this image
 
