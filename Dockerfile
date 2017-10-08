@@ -6,7 +6,7 @@ LABEL description="XMRig in Docker. Supports CPU mining."
 WORKDIR /tmp
 
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install ca-certificates git build-essential cmake libuv1-dev \
+    && apt-get -y --no-install-recommends install ca-certificates git build-essential cmake libmicrohttpd-dev libuv1-dev \
     && git clone https://github.com/xmrig/xmrig.git \
     && cd xmrig \
     && cmake . \
