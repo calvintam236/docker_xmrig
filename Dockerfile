@@ -1,4 +1,4 @@
-FROM debian:jessie-slim
+FROM debian:stretch-slim
 
 MAINTAINER calvintam236 <calvintam236@users.noreply.github.com>
 LABEL description="XMRig in Docker. Supports CPU mining."
