@@ -4,22 +4,26 @@
 
 XMRig is the console miner provided by [XMRig](https://github.com/xmrig/xmrig).
 
-XMRig supports Cryptonight, Cryptonight-heavy and Cryptonight-lite.
+XMRig supports Cryptonight and its variants.
 
 ### Example usages
 
-Replace `ARCH` for your system architecture. Available option(s): `x86_64`
+- To build the image:
+
+```console
+$ docker build . --file YOUR_VERSION/Dockerfile.YOUR_ARCH --tag calvintam236/xmrig:YOUR_VERSION
+```
 
 - To run the container in background:
 
 ```console
-$ docker run -d --name YOUR_CONTAINER_NAME calvintam236/xmrig:ARCH -a YOUR_ALGO -o YOUR_POOL_ADDRESS -u YOUR_USERNAME.YOUR_WORKER_NAME -p YOUR_WORKER_PASSWORD
+$ docker run -d --name YOUR_CONTAINER_NAME calvintam236/xmrig:YOUR_VERSION -a YOUR_ALGO -o YOUR_POOL_ADDRESS -u YOUR_USERNAME.YOUR_WORKER_NAME -p YOUR_WORKER_PASSWORD
 ```
 
-- Get `xmrig` options:
+- To get `xmrig` options:
 
 ```console
-$ docker run --rm calvintam236/xmrig:ARCH
+$ docker run --rm calvintam236/xmrig:YOUR_VERSION
 ```
 
 - To fetch logs of a container:
@@ -30,7 +34,7 @@ $ docker logs YOUR_CONTAINER_NAME
 
 ### Donations
 
-If you like to buy me a cup of coffee for this Dockerfile/ docker image, you can donate to here:
+If you like to buy me a coffee, you can donate to here:
 
 - BTC: `1MTkPFtp3qxE4Y98pTHP3z767RGKmrT92a`
 - ETH: `0x5896a85E8c175c563DC00087535582394d394838`
