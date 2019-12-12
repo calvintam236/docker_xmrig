@@ -4,20 +4,25 @@
 
 XMRig is the console miner provided by [XMRig](https://github.com/xmrig/xmrig).
 
-XMRig supports Cryptonight and its variants.
+XMRig supports Cryptonight and its variants, Argon2 and RandomX.
 
 ### Example usages
 
 - To build the image:
 
 ```console
-$ docker build . --file YOUR_VERSION/Dockerfile.YOUR_ARCH --tag calvintam236/xmrig:YOUR_VERSION
+$ docker build . --file YOUR_VERSION/Dockerfile.YOUR_ARCH --tag calvintam236/xmrig:rocm-YOUR_VERSION
+
+$ docker build . --file YOUR_VERSION/Dockerfile.YOUR_ARCH --tag calvintam236/xmrig:mesa-YOUR_VERSION
+
+$ curl -L -O --referer https://www.amd.com https://drivers.amd.com/drivers/linux/amdgpu-pro-19.30-934563-ubuntu-18.04.tar.xz
+$ docker build . --file YOUR_VERSION/Dockerfile.YOUR_ARCH --tag calvintam236/xmrig:amdgpu-YOUR_VERSION
 ```
 
 - To run the container in background:
 
 ```console
-$ docker run -d --name YOUR_CONTAINER_NAME calvintam236/xmrig:YOUR_VERSION -a YOUR_ALGO -o YOUR_POOL_ADDRESS -u YOUR_USERNAME.YOUR_WORKER_NAME -p YOUR_WORKER_PASSWORD
+$ docker run -d --device /dev/kfd --device /dev/dri --name YOUR_CONTAINER_NAME calvintam236/xmrig:YOUR_VERSION -a YOUR_ALGO -o YOUR_POOL_ADDRESS -u YOUR_USERNAME.YOUR_WORKER_NAME -p YOUR_WORKER_PASSWORD
 ```
 
 - To get `xmrig` options:
