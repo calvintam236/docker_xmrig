@@ -1,0 +1,35 @@
+FROM ubuntu:bionic
+
+LABEL maintainer="calvintam236"
+LABEL description="XMRig in Docker. Supports CPU & GPU mining."
+
+WORKDIR /tmp/
+
+ADD \
+https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin \
+.
+
+ADD \
+https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub \
+.
+
+ADD \
+https://github.com/xmrig/xmrig/releases/download/v5.1.1/xmrig-5.1.1-xenial-x64.tar.gz \
+.
+
+RUN \
+mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
+&& apt-get update \
+&& apt-get -y --no-install-recommends install gnupg2 software-properties-common \
+&& apt-key add 7fa2af80.pub \
+&& add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /" \
+&& apt-get update \
+&& DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install cuda-toolkit-10-2 \
+&& rm -rf /var/lib/apt/lists/* \
+&& tar -xvf xmrig-5.1.1-xenial-x64.tar.gz \
+&& mv xmrig-5.1.1/xmrig /usr/local/bin/xmrig \
+&& chmod +x /usr/local/bin/xmrig \
+&& rm -r *
+
+ENTRYPOINT ["xmrig"]
+CMD ["-h"]
