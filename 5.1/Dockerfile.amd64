@@ -1,5 +1,43 @@
 FROM ubuntu:bionic
 
+WORKDIR /tmp/
+
+ADD \
+https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin \
+.
+
+ADD \
+https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub \
+.
+
+ADD \
+https://github.com/xmrig/xmrig-cuda/archive/v2.1.0.tar.gz \
+.
+
+RUN \
+mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
+&& apt-get update \
+&& apt-get -y --no-install-recommends install gnupg2 software-properties-common \
+&& apt-key add 7fa2af80.pub \
+&& add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /" \
+&& apt-get update \
+&& apt-get -y --no-install-recommends install build-essential cmake cuda-toolkit-10-2 \
+&& tar -xvf v2.1.0.tar.gz \
+&& cd xmrig-cuda-2.1.0/ \
+&& mkdir build/ \
+&& cd build/ \
+&& cmake .. -DCUDA_LIB=/usr/local/cuda/lib64/stubs/libcuda.so \
+&& make \
+&& ls -la \
+&& mkdir /usr/local/xmrig/ \
+&& mv libxmrig-cuda.so /usr/local/xmrig/ \
+&& cd .. \
+&& rm -r * \
+&& apt-get -y --auto-remove purge build-essential cmake cuda-toolkit-10-2
+
+
+FROM ubuntu:bionic
+
 LABEL maintainer="calvintam236"
 LABEL description="XMRig in Docker. Supports CPU & GPU mining."
 
@@ -17,6 +55,8 @@ ADD \
 https://github.com/xmrig/xmrig/releases/download/v5.1.1/xmrig-5.1.1-xenial-x64.tar.gz \
 .
 
+COPY --from=0 /usr/local/xmrig/ /usr/local/xmrig/
+
 RUN \
 mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
 && apt-get update \
@@ -24,12 +64,12 @@ mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
 && apt-key add 7fa2af80.pub \
 && add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /" \
 && apt-get update \
-&& DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install cuda-toolkit-10-2 \
+&& DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install cuda-runtime-10-2 \
 && rm -rf /var/lib/apt/lists/* \
 && tar -xvf xmrig-5.1.1-xenial-x64.tar.gz \
-&& mv xmrig-5.1.1/xmrig /usr/local/bin/xmrig \
-&& chmod +x /usr/local/bin/xmrig \
+&& mv xmrig-5.1.1/xmrig /usr/local/xmrig/xmrig \
+&& chmod +x /usr/local/xmrig/xmrig \
 && rm -r *
 
-ENTRYPOINT ["xmrig"]
+ENTRYPOINT ["/usr/local/xmrig/xmrig"]
 CMD ["-h"]
