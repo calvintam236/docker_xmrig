@@ -10,7 +10,7 @@ http://repo.radeon.com/rocm/apt/debian/rocm.gpg.key \
 .
 
 ADD \
-https://github.com/xmrig/xmrig/releases/download/v5.5.0/xmrig-5.5.0-xenial-x64.tar.gz \
+https://github.com/xmrig/xmrig/releases/download/v5.5.1/xmrig-5.5.1-xenial-x64.tar.gz \
 .
 
 RUN \
@@ -21,8 +21,8 @@ apt-get update \
 && apt-get update \
 && apt-get -y --no-install-recommends install libnuma-dev rocm-dev \
 && rm -rf /var/lib/apt/lists/* \
-&& tar -xvf xmrig-5.5.0-xenial-x64.tar.gz \
-&& mv xmrig-5.5.0/xmrig /usr/local/bin/xmrig \
+&& tar -xvf xmrig-5.5.1-xenial-x64.tar.gz \
+&& mv xmrig-5.5.1/xmrig /usr/local/bin/xmrig \
 && chmod +x /usr/local/bin/xmrig \
 && rm -r *
 
