@@ -14,7 +14,7 @@ apt-get update \
 && apt-get -y --no-install-recommends install mesa-opencl-icd ocl-icd-opencl-dev \
 && rm -rf /var/lib/apt/lists/* \
 && tar -xvf xmrig-5.1.1-xenial-x64.tar.gz \
-&& mv xmrig-5.1.1/xmrig /usr/local/bin/xmrig \
+&& mv xmrig-5.1.1/xmrig /usr/local/bin/ \
 && chmod +x /usr/local/bin/xmrig \
 && rm -r *
 
