@@ -17,7 +17,7 @@ RUN \
 ./amdgpu-pro-19.30-934563-ubuntu-18.04/amdgpu-install -y --headless --opencl=legacy,pal \
 && rm -rf /var/lib/apt/lists/* \
 && tar -xvf xmrig-5.4.0-xenial-x64.tar.gz \
-&& mv xmrig-5.4.0/xmrig /usr/local/bin/xmrig \
+&& mv xmrig-5.4.0/xmrig /usr/local/bin/ \
 && chmod +x /usr/local/bin/xmrig \
 && rm -r *
 
