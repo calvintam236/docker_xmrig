@@ -67,7 +67,7 @@ mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
 && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install cuda-runtime-10-2 \
 && rm -rf /var/lib/apt/lists/* \
 && tar -xvf xmrig-5.5.1-xenial-x64.tar.gz \
-&& mv xmrig-5.5.1/xmrig /usr/local/bin/xmrig \
+&& mv xmrig-5.5.1/xmrig /usr/local/xmrig/xmrig \
 && chmod +x /usr/local/xmrig/xmrig \
 && rm -r *
 
