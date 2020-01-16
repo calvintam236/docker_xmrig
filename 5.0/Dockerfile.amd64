@@ -28,7 +28,6 @@ mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
 && cd build/ \
 && cmake .. -DCUDA_LIB=/usr/local/cuda/lib64/stubs/libcuda.so \
 && make \
-&& ls -la \
 && mkdir /usr/local/xmrig/ \
 && mv libxmrig-cuda.so /usr/local/xmrig/ \
 && cd .. \
@@ -67,7 +66,7 @@ mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
 && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install cuda-runtime-10-2 \
 && rm -rf /var/lib/apt/lists/* \
 && tar -xvf xmrig-5.0.1-xenial-x64.tar.gz \
-&& mv xmrig-5.0.1/xmrig /usr/local/xmrig/xmrig \
+&& mv xmrig-5.0.1/xmrig /usr/local/xmrig/ \
 && chmod +x /usr/local/xmrig/xmrig \
 && rm -r *
 
