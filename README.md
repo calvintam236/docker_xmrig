@@ -15,7 +15,7 @@ $ docker build . --file YOUR_VERSION/Dockerfile.YOUR_ARCH --tag calvintam236/xmr
 
 $ docker build . --file YOUR_VERSION/Dockerfile.YOUR_ARCH --tag calvintam236/xmrig:rocm-YOUR_VERSION
 
-$ curl -L -O --referer https://www.amd.com https://drivers.amd.com/drivers/linux/amdgpu-pro-19.30-934563-ubuntu-18.04.tar.xz
+$ curl -L -O --referer https://www.amd.com https://drivers.amd.com/drivers/linux/amdgpu-pro-20.45-1164792-ubuntu-20.04.tar.xz
 $ docker build . --file YOUR_VERSION/Dockerfile.YOUR_ARCH --tag calvintam236/xmrig:amdgpu-YOUR_VERSION
 
 $ docker build . --file YOUR_VERSION/Dockerfile.YOUR_ARCH --tag calvintam236/xmrig:cuda-YOUR_VERSION
