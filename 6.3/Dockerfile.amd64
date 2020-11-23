@@ -1,13 +1,13 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 
 WORKDIR /tmp/
 
 ADD \
-https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin \
+https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin \
 .
 
 ADD \
-https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub \
+https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub \
 .
 
 ADD \
@@ -15,11 +15,11 @@ https://github.com/xmrig/xmrig-cuda/archive/v6.5.0.tar.gz \
 .
 
 RUN \
-mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
+mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
 && apt-get update \
 && apt-get -y --no-install-recommends install gnupg2 software-properties-common \
 && apt-key add 7fa2af80.pub \
-&& add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /" \
+&& add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /" \
 && apt-get update \
 && apt-get -y --no-install-recommends install build-essential cmake cuda-toolkit-11-1 \
 && tar -xvf v6.5.0.tar.gz \
@@ -35,7 +35,7 @@ mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
 && apt-get -y --auto-remove purge build-essential cmake cuda-toolkit-11-1
 
 
-FROM ubuntu:bionic
+FROM ubuntu:focal
 
 LABEL maintainer="calvintam236"
 LABEL description="XMRig in Docker. Supports CPU & GPU mining."
@@ -43,11 +43,11 @@ LABEL description="XMRig in Docker. Supports CPU & GPU mining."
 WORKDIR /tmp/
 
 ADD \
-https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin \
+https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin \
 .
 
 ADD \
-https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub \
+https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub \
 .
 
 ADD \
@@ -57,11 +57,11 @@ https://github.com/xmrig/xmrig/releases/download/v6.3.5/xmrig-6.3.5-linux-static
 COPY --from=0 /usr/local/xmrig/ /usr/local/xmrig/
 
 RUN \
-mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
+mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
 && apt-get update \
 && apt-get -y --no-install-recommends install gnupg2 software-properties-common \
 && apt-key add 7fa2af80.pub \
-&& add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /" \
+&& add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /" \
 && apt-get update \
 && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install cuda-runtime-11-1 \
 && rm -rf /var/lib/apt/lists/* \
