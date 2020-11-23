@@ -11,7 +11,7 @@ https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2a
 .
 
 ADD \
-https://github.com/xmrig/xmrig-cuda/archive/v2.1.0.tar.gz \
+https://github.com/xmrig/xmrig-cuda/archive/v2.2.0.tar.gz \
 .
 
 RUN \
@@ -22,8 +22,8 @@ mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
 && add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /" \
 && apt-get update \
 && apt-get -y --no-install-recommends install build-essential cmake cuda-toolkit-10-2 \
-&& tar -xvf v2.1.0.tar.gz \
-&& cd xmrig-cuda-2.1.0/ \
+&& tar -xvf v2.2.0.tar.gz \
+&& cd xmrig-cuda-2.2.0/ \
 && mkdir build/ \
 && cd build/ \
 && cmake .. -DCUDA_LIB=/usr/local/cuda/lib64/stubs/libcuda.so \
