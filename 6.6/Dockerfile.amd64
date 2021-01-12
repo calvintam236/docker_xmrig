@@ -10,14 +10,14 @@ amdgpu-pro-20.45-1164792-ubuntu-20.04.tar.xz \
 .
 
 ADD \
-https://github.com/xmrig/xmrig/releases/download/v6.6.1/xmrig-6.6.1-linux-static-x64.tar.gz \
+https://github.com/xmrig/xmrig/releases/download/v6.6.2/xmrig-6.6.2-linux-static-x64.tar.gz \
 .
 
 RUN \
 ./amdgpu-pro-20.45-1164792-ubuntu-20.04/amdgpu-install -y --headless --opencl=legacy,pal \
 && rm -rf /var/lib/apt/lists/* \
-&& tar -xvf xmrig-6.6.1-linux-static-x64.tar.gz \
-&& mv xmrig-6.6.1/xmrig /usr/local/bin/ \
+&& tar -xvf xmrig-6.6.2-linux-static-x64.tar.gz \
+&& mv xmrig-6.6.2/xmrig /usr/local/bin/ \
 && chmod +x /usr/local/bin/xmrig \
 && rm -r *
 
