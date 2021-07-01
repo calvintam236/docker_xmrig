@@ -6,7 +6,7 @@ LABEL description="XMRig in Docker. Supports CPU & GPU mining."
 WORKDIR /tmp/
 
 ADD \
-amdgpu-pro-20.45-1164792-ubuntu-20.04.tar.xz \
+amdgpu-pro-21.20-1271047-ubuntu-20.04.tar.xz \
 .
 
 ADD \
@@ -14,7 +14,7 @@ https://github.com/xmrig/xmrig/releases/download/v5.2.1/xmrig-5.2.1-xenial-x64.t
 .
 
 RUN \
-./amdgpu-pro-20.45-1164792-ubuntu-20.04/amdgpu-install -y --headless --opencl=legacy,pal \
+./amdgpu-pro-21.20-1271047-ubuntu-20.04/amdgpu-install -y --headless --opencl=legacy,pal \
 && rm -rf /var/lib/apt/lists/* \
 && tar -xvf xmrig-5.2.1-xenial-x64.tar.gz \
 && mv xmrig-5.2.1/xmrig /usr/local/bin/ \
