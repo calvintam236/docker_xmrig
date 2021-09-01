@@ -21,7 +21,7 @@ mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
 && apt-key add 7fa2af80.pub \
 && add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /" \
 && apt-get update \
-&& apt-get -y --no-install-recommends install build-essential cmake cuda-toolkit-11-1 \
+&& apt-get -y --no-install-recommends install build-essential cmake cuda-toolkit-11-3 \
 && tar -xvf v6.12.0.tar.gz \
 && cd xmrig-cuda-6.12.0/ \
 && mkdir build/ \
@@ -32,7 +32,7 @@ mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
 && mv libxmrig-cuda.so /usr/local/xmrig/ \
 && cd .. \
 && rm -r * \
-&& apt-get -y --auto-remove purge build-essential cmake cuda-toolkit-11-1
+&& apt-get -y --auto-remove purge build-essential cmake cuda-toolkit-11-3
 
 
 FROM ubuntu:focal
@@ -63,7 +63,7 @@ mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
 && apt-key add 7fa2af80.pub \
 && add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /" \
 && apt-get update \
-&& DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install cuda-runtime-11-1 \
+&& DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install cuda-runtime-11-3 \
 && rm -rf /var/lib/apt/lists/* \
 && tar -xvf xmrig-6.13.1-focal-x64.tar.gz \
 && mv xmrig-6.13.1/xmrig /usr/local/xmrig/ \
