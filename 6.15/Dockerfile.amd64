@@ -11,7 +11,7 @@ https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2a
 .
 
 ADD \
-https://github.com/xmrig/xmrig-cuda/archive/refs/tags/v6.15.0.tar.gz \
+https://github.com/xmrig/xmrig-cuda/archive/refs/tags/v6.15.1.tar.gz \
 .
 
 RUN \
@@ -22,8 +22,8 @@ mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
 && add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /" \
 && apt-get update \
 && apt-get -y --no-install-recommends install build-essential cmake cuda-toolkit-11-3 \
-&& tar -xvf v6.15.0.tar.gz \
-&& cd xmrig-cuda-6.15.0/ \
+&& tar -xvf v6.15.1.tar.gz \
+&& cd xmrig-cuda-6.15.1/ \
 && mkdir build/ \
 && cd build/ \
 && cmake .. -DCUDA_LIB=/usr/local/cuda/lib64/stubs/libcuda.so \
@@ -51,7 +51,7 @@ https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2a
 .
 
 ADD \
-https://github.com/xmrig/xmrig/releases/download/v6.15.0/xmrig-6.15.0-focal-x64.tar.gz \
+https://github.com/xmrig/xmrig/releases/download/v6.15.2/xmrig-6.15.2-focal-x64.tar.gz \
 .
 
 COPY --from=0 /usr/local/xmrig/ /usr/local/xmrig/
@@ -65,8 +65,8 @@ mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
 && apt-get update \
 && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install cuda-runtime-11-3 \
 && rm -rf /var/lib/apt/lists/* \
-&& tar -xvf xmrig-6.15.0-focal-x64.tar.gz \
-&& mv xmrig-6.15.0/xmrig /usr/local/xmrig/ \
+&& tar -xvf xmrig-6.15.2-focal-x64.tar.gz \
+&& mv xmrig-6.15.2/xmrig /usr/local/xmrig/ \
 && chmod +x /usr/local/xmrig/xmrig \
 && rm -r *
 
