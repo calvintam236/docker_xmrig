@@ -6,15 +6,15 @@ LABEL description="XMRig in Docker. Supports CPU & GPU mining."
 WORKDIR /tmp/
 
 ADD \
-https://github.com/xmrig/xmrig/releases/download/v6.15.0/xmrig-6.15.0-linux-static-x64.tar.gz \
+https://github.com/xmrig/xmrig/releases/download/v6.15.2/xmrig-6.15.2-linux-static-x64.tar.gz \
 .
 
 RUN \
 apt-get update \
 && apt-get -y --no-install-recommends install mesa-opencl-icd ocl-icd-opencl-dev \
 && rm -rf /var/lib/apt/lists/* \
-&& tar -xvf xmrig-6.15.0-linux-static-x64.tar.gz \
-&& mv xmrig-6.15.0/xmrig /usr/local/bin/ \
+&& tar -xvf xmrig-6.15.2-linux-static-x64.tar.gz \
+&& mv xmrig-6.15.2/xmrig /usr/local/bin/ \
 && chmod +x /usr/local/bin/xmrig \
 && rm -r *
 
