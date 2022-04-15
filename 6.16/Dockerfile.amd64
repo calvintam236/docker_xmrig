@@ -11,7 +11,7 @@ https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2a
 .
 
 ADD \
-https://github.com/xmrig/xmrig-cuda/archive/refs/tags/v6.15.1.tar.gz \
+https://github.com/xmrig/xmrig-cuda/archive/refs/tags/v6.17.0.tar.gz \
 .
 
 RUN \
@@ -22,8 +22,8 @@ mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
 && add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /" \
 && apt-get update \
 && apt-get -y --no-install-recommends install build-essential cmake cuda-toolkit-11-3 \
-&& tar -xvf v6.15.1.tar.gz \
-&& cd xmrig-cuda-6.15.1/ \
+&& tar -xvf v6.17.0.tar.gz \
+&& cd xmrig-cuda-6.17.0/ \
 && mkdir build/ \
 && cd build/ \
 && cmake .. -DCUDA_LIB=/usr/local/cuda/lib64/stubs/libcuda.so \
